@@ -1,0 +1,4 @@
+\e\e
+70
+simple text
+\e\e

@@ -17,45 +17,19 @@ prnstatus = ""
 
 flog = open("log.txt", "a")
 
+ch_mapping = {168:240, 184:241, 170:242, 186:243, 175:244, 191:245, 161:246, 162:247, 
+              176:248, 149:249, 183:250, 134:251, 135:252, 136:253, 137:254, 177:255}
+
 def ch_encode(ch):
   res = ch
-  if ord(ch) >= 240:
-    res = chr(ord(ch)-16)
-  elif ord(ch) >= 192 and ord(ch) < 240:
-    res = chr(ord(ch)-64)
-  elif ord(ch) == 168:
-    res = chr(240)
-  elif ord(ch) == 184:
-    res = chr(241)
-  elif ord(ch) == 170:
-    res = chr(242)
-  elif ord(ch) == 186:
-    res = chr(243)
-  elif ord(ch) == 175:
-    res = chr(244)
-  elif ord(ch) == 191:
-    res = chr(245)
-  elif ord(ch) == 161:
-    res = chr(246)
-  elif ord(ch) == 162:
-    res = chr(247)
-  elif ord(ch) == 176:
-    res = chr(248)
-  elif ord(ch) == 149:
-    res = chr(249)
-  elif ord(ch) == 183:
-    res = chr(250)
-  elif ord(ch) == 134:
-    res = chr(251)
-  elif ord(ch) == 135:
-    res = chr(252)
-  elif ord(ch) == 136:
-    res = chr(253)
-  elif ord(ch) == 137:
-    res = chr(254)
-  elif ord(ch) == 177:
-    res = chr(255)
-  
+  tmp = ord(ch)
+  if tmp >= 240:
+    res = chr(tmp - 16)
+  elif tmp >= 192 and tmp < 240:
+    res = chr(tmp - 64)
+  elif tmp in ch_mapping.keys():
+    res = chr(ch_mapping[tmp])
+
   return res
 
 def st_encode(st):
